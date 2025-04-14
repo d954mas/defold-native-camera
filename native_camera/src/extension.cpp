@@ -402,16 +402,16 @@ static int LuaCreateCamera(lua_State *L) {
         luaL_register(L, 0, LuaCameraMethods);
     }
     lua_setmetatable(L, -2);
-    dmLogInfo("NativeCamera %d",top);
+   // dmLogInfo("NativeCamera %d",top);
     if (top == 1) {
         if (lua_istable(L, 1)) {
             /* table is in the stack at index 't' */
             lua_pushnil(L);  /* first key */
-            dmLogInfo("Starting to iterate table");
+           // dmLogInfo("Starting to iterate table");
             while (lua_next(L, 1) != 0) {
                 const char* key = lua_tostring(L, -2);
                 dmhash_t hash_value = dmHashString64(key);
-                dmLogInfo("key %s",key);
+               // dmLogInfo("key %s",key);
                 if (hash_value == HASH_POSITION) {
                     userdata->pos = *dmScript::CheckVector3(L, -1);
                 } else if (hash_value == HASH_ROTATION) {
